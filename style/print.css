@@ -1,0 +1,63 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+
+a {text-decoration: none;}
+a:link, a:visited, a:active{color:#000000;} 
+
+html {	
+	font-family:serif;
+	background-color:#FFFFFF;
+}
+
+table,th,td {
+	border: 2px solid #000000;
+	border-collapse: collapse;
+	padding:5px;
+}
+
+#top, #main, #printcheck, .poi {border:2px solid #000000;}
+#top, #main, #warning, #printcheck, iframe {display:none;}
+
+.noprint{display:none; !important;}
+.clear{clear:both;}
+.center{text-align:center;}
+.nolist{list-style:none;}
+.list{list-style:disc inside none;}
+.left{float:left;}
+.right{float:right;}
+.half{width:48%;}
+
+.poi {
+	position: relative;
+    padding:10px;
+    border:2px solid #000000;
+    margin-top:20px;
+}
+
+ #printcheck {
+ 	display:none;
+	line-height:30px;
+	font-size:17px;
+	width:200px;
+ }
+ 
+#printcheckboxes{
+ 	margin:12px auto;
+ 	line-height:30px;
+ 	font-size:17px;
+ 	width:150px;
+ }
+ 
+ .button {
+	cursor: pointer;
+	margin:0 auto;
+ 	margin-bottom:20px;
+ 	line-height:30px;
+ 	font-weight:bold;
+ 	text-align:center;
+ 	background-color:#FF9933;
+ 	color:#000000;
+  	width:150px;
+ }
