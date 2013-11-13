@@ -153,6 +153,7 @@ table,th,td {
 .poi {
 	position: relative;
     padding:20px;
+	padding-left:30px;
 }
 
 
@@ -170,7 +171,8 @@ table,th,td {
 
 #topimage {
 	height: 280px;
-	background-image: url(../data/gfx/menu_tu.jpg);
+	background-color:black;
+	/* background-image: url(../data/gfx/menu_tu.jpg); */
 /* 	overflow:hidden; */
 }
 
@@ -195,11 +197,12 @@ table,th,td {
 #menu li a  {
 	position:absolute;
 	top:11px;
-	text-indent:-999em;
+	/* text-indent:-999em; */
 	background:url(../data/gfx/menu_button.png) no-repeat 0 0;
 	display:block;
 	width:109px;
-	background-color:blue;
+	/* border:1px solid white; */
+	background-color:rgb(78, 100, 126);
 }
 
 

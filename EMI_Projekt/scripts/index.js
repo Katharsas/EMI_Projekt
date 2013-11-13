@@ -110,34 +110,34 @@ $(document).ready(function() {
 	/**
 	 * Printing
 	 */
-	$("#print_link").click(function () {
-		//show print stuff div and hide the svg stuff
-		$('#main').css("display","none");
-		$('#printcheck').css("display","block");
-		//checkCheckBoxes one time to show correct containers depending an default Checkbox states
-		$(':checkbox').each(function () {
-			checkCheckBox(this);
-		});
-		//buttons from Checkboxes
-		$(':checkbox').click(function () {
-			checkCheckBox(this);
-		});	
-		//button for printing
-		$("#printbutton").click(function () {
-			//hide print stuff container
-			$('#printcheck').css("display","none");
-			//PRINT!!!
-			window.print();
-			$('#printcheck').css("display","block");
-			return false;
-		});
-		//button for switching screen style from index.css to print.css and back
-		$("#changebutton").click(function () {
-			if($('#css_link').attr("href")=="style/print.css"){$('#css_link').attr("href","style/index.css");}
-			else{$('#css_link').attr("href","style/print.css");}
-			return false;
-		});
-	});
+	// $("#print_link").click(function () {
+		// //show print stuff div and hide the svg stuff
+		// $('#main').css("display","none");
+		// $('#printcheck').css("display","block");
+		// //checkCheckBoxes one time to show correct containers depending an default Checkbox states
+		// $(':checkbox').each(function () {
+			// checkCheckBox(this);
+		// });
+		// //buttons from Checkboxes
+		// $(':checkbox').click(function () {
+			// checkCheckBox(this);
+		// });	
+		// //button for printing
+		// $("#printbutton").click(function () {
+			// //hide print stuff container
+			// $('#printcheck').css("display","none");
+			// //PRINT!!!
+			// window.print();
+			// $('#printcheck').css("display","block");
+			// return false;
+		// });
+		// //button for switching screen style from index.css to print.css and back
+		// $("#changebutton").click(function () {
+			// if($('#css_link').attr("href")=="style/print.css"){$('#css_link').attr("href","style/index.css");}
+			// else{$('#css_link').attr("href","style/print.css");}
+			// return false;
+		// });
+	// });
 });
 
 
