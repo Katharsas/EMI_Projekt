@@ -8,18 +8,23 @@
 /*
  * This variable "id" defines the IDs for the Points of Interest (POIs) in this Script.
  * They must be IDENTICAL to the IDs used in HTML for the POI-DIV-Containers!!!
+ * Do not use any underscore or the splitter String (see below) in any id!
  */
 var id = ["poi1","poi2","poi3","poi4","poi5"];
-var id_current;
-var pathInformation = flattenPathInformation(getPathInformation());
-
-var orange="#FF9933";//orange! also used for highlighting stuff, because orange is awesome.
-
+var id_current; //currently selected id
+var splitter = "--";//seperates id name from path suffix,
+					//where suffix is number of path for a certain id,
+					//eg: poi1--0, poi1--1, etc., must not be underscore!
+var pathInformation = flattenPathInformation(getPathInformation());//arraymap with one id+splitter+suffix per path,
+					//eg: {poi1--0:{...},poi2--0:{...}}  see also function flattenPathInformation()
 
 /*
- * SVG-Polygon-Colours default
+ * SVG-Polygon-Colours, one color per path, as specified in getPathInformation()
  */
-var farben_default = jQuery.extend(true, {}, getColors(pathInformation));
+var farben = getColors(pathInformation);//path colors displayed atm (selected paths are orange).
+var farben_default = getColors(pathInformation);//default colors (if nothing is selected), used to restore color when select ends.
+
+var orange="#FF9933";//orange! also used for highlighting stuff, because orange is awesome.
 
 
 /*
@@ -33,6 +38,7 @@ var farben_default = jQuery.extend(true, {}, getColors(pathInformation));
  */
 $(document).ready(function() {
 	hidePoiContainers();
+	
 	/**
 	 * SVG-Polygon-Interactivity and SVG-Map Properties
 	 */
@@ -42,13 +48,13 @@ $(document).ready(function() {
 		backgroundColor : "rgb(78, 100, 126)",
 		hoverOpacity : 0.0,
 		hoverColor : false,
-		colors : getColors(pathInformation),
-		onRegionClick : function(event, code, region)
+		colors : farben,
+		onRegionClick : function(event, code)
 		{
-			switchPoi(code);
+			// called when user clicks on svg map, code is the key of the pathmap, eg. code = poi1--0
+			switchFlatPoi(code);
 		}
 	});
-	
 	setUpFloatingMenu();
 	
 	/**
@@ -91,22 +97,23 @@ $(document).ready(function() {
 			return false;
 		});
 	});
+	
 });
 
 
 /**
- * SVG Map Creation - Set Values to SVG Background Image Dimension and HTML Container!
+ * SVG Map Creation - Set Values to SVG Background, Image Dimension and HTML Container!
  * If Container has different size, SVG map will be scaled to match Container.
  */
-$.fn.vectorMap("addMap", "karten",
-{
+$.fn.vectorMap("addMap", "karten", {
 	"width": 788,
 	"height": 410,
 	"pathes": getPaths(pathInformation)
 });
 
 /**
- * Returns an association array with multiple paths per key (pathGroups).
+ * Returns an association array with multiple paths per key (pathGroups) and an association array per path with all values for this path.
+ * To use the returned array with jvectormaps, it must be flattened first, so that there is only one path information array per key!
  */
 function getPathInformation() {
 	var paths = {}; //form-codes for SVG polygons, see below
@@ -120,18 +127,18 @@ function getPathInformation() {
 	paths[id[0]]=
 	[
 		{	"path": "M47.688,171.86l5-0.25l0.5,2l8-1.25l-1.75-7l2.25-1.25l0.75-4.5l7-1 v4.25l6.75-1.25l0.75-8.75l11,0.75l1.25-2.25l13.75-0.25l-0.25,2.5l2.5,0.75l-0.75,6.25l-5.75,0.25l-1-2.75l-5-0.25l-0.25,2.25 l-3.25,0.5l-0.75-1.25l-2.75,0.25l0.75,19l4.5,34.75l-8.5-0.5l-1.75-17l-7.5-0.5l-22.5,2.75l-3.5-24.25L47.688,171.86z",
-			"name": "POI1",
+			"name": "Bayer",
 			"color": "#3366CC"}
 	];
 		
 	paths[id[1]]=
 	[
 		{	"path": "M95.688,365.36l-8.5,30l10.5,2.75l7.5-23l6.75,1.25l-9.5,28l-23.25-8 l3.25-11.5l-24-7.75l7-21.75L95.688,365.36z",
-			"name": "POI2",
+			"name": "Schuhmann",
 			"color": "#669933"},
 		{
 			"path": "M92.438,377.36l10.75,3.25l-5.5,17.5l-10.5-2.75L92.438,377.36z",
-			"name": "POI2",
+			"name": "Schuhman Innenhof",
 			"color": "#88BB55"}
 	];
 
@@ -156,7 +163,7 @@ function getPathInformation() {
 
 /**
  * Flattens the pathGroups from getPaths() function to one path per key.
- * Adds _<index of path in pathGroup> to every key String.
+ * Adds --<index of path in pathGroup> suffix to every key (id) String.
  * e.g.
  * 
  * {
@@ -167,9 +174,9 @@ function getPathInformation() {
  * becomes
  * 
  * {
- * a_0: info1
- * a_1: info2
- * b_0: info3
+ * a--0: info1
+ * a--1: info2
+ * b--0: info3
  * }
  *
  */
@@ -180,17 +187,36 @@ function flattenPathInformation(pathInformation) {
 		var pathGroup = pathInformation[key];
 		
 		for (var j = 0; j < pathGroup.length; j++) {
-			flat[key+"_"+j] = pathGroup[j];
+			flat[key+splitter+j] = pathGroup[j];
 		}
 	}
+	/** returns eg.
+	{
+		poi1--0:{path:..., name:..., color:...}
+		poi2--0:{path:..., name:..., color:...}
+		poi2--1:{path:..., name:..., color:...}
+	}*/
 	return flat;
 }
 
 /**
- * Returns paths for jvectormaps
+ * Returnes, how many paths exist for every id
+ * (maps ids to their path arrays length)
+ */
+function extractPathPerPoi(pathInformation) {
+	var poiPathCount = {};
+	for (key in pathInformation) {
+		poiPathCount[key] = pathInformation[key].length;
+	}
+	/** returns eg. {poi1:1, poi2:2, poi3:1} */
+	return poiPathCount;
+}
+
+/**
+ * Returns paths for jvectormaps. Needs a flat path array as input (one path per key).
+ *(removes all values apart from path and name in every path array)
  */
 function getPaths(flatPathInformation) {
-	
 	var paths = {};
 	for (key in flatPathInformation) {
 		paths[key] = {
@@ -198,11 +224,20 @@ function getPaths(flatPathInformation) {
 			"name":flatPathInformation[key]["name"]
 		};
 	}
+	// var paths = oldPaths();
+	// for (key in paths) {
+		// var buffer = key+" => \n";
+		// for(innerKey in paths[key]) {
+			// buffer = buffer +"\n"+innerKey+": "+paths[key][innerKey]+"\n";
+		// }
+		// testAlert(buffer);
+	// }
 	return paths;
 }
 
 /**
  * Returns colors for jvectormaps
+ * (maps ids to their path array's color value)
  */
 function getColors(flatPathInformation) {
 	
@@ -223,7 +258,6 @@ function hidePoiContainers(){
 	}
 }
 
-
 /**
  * Shows all poi Containers
  */
@@ -233,35 +267,68 @@ function showPoiContainers(){
 	}
 }
 
+/**
+ * Inflates id to flat id and redirects to switchFlatPoi
+ */
+function switchPoi(code) {
+	// eg. code = poi1
+	switchFlatPoi(code+splitter+"0");
+	//argument is eg. "poi1--0"
+}
 
 /**
- * Shows the new poi container (with id_code as id) and hides the old poi (animation included)
- * Also highlights regions on svg map
+ * Shows the new poi container (whos id is the same as "code"/"id_current" variable),
+ * hides the old poi with "id_old" as id, highlights the according regions on svg map and the according link.
+ * poi containers are animetd with jQuery.
  */
-function switchPoi(id_code){
+function switchFlatPoi(flatCode){
+	// eg. flatCode = "poi1--0"
+	// eg. id_current = "poi4"
 	
-	if(id_code!=id_current){
-		var id_old = id_current;
-		id_current = id_code;
+	var code = flatCode.split(splitter)[0];// eg. code = "poi1"
+	
+	if(code!=id_current && code.indexOf("poi")!=-1){//if new poi is not the old one and code contains "poi"
+	
+		var id_old = id_current;// eg. id_old = "poi4"
+		id_current = code;// eg. id_current = "poi1";
 		
-		//map region colour highlighting
-		farben[id_old]=farben_default[id_old];
-		farben[id_current]="#FF9933";
+		var pathPerPoi = extractPathPerPoi(getPathInformation());
+		
+		//get the number of paths for the old poi ( old poi is the poi which was selected before the current one)
+		var pathCount = pathPerPoi[id_old];
+		
+		//give all old paths their default color, so they aren't orange anymore
+		for(var i = 0; i < pathCount; i++) {
+			farben[id_old+splitter+i] = farben_default[id_old+splitter+i];
+		}
+		
+		//get the number of paths for the current (new) poi
+		pathCount = pathPerPoi[id_current];
+		
+		//give alle current paths the color orange
+		for(var i = 0; i < pathCount; i++) {
+			farben[id_current+splitter+i] = orange;
+		}
+		
+		//set new colors to map
 		$('#map').vectorMap('set', 'colors', farben);
 		
-		//poi link colour highlighting
+		//make current(new) poi link orange and old link black again
 		$('#'+id_old+"_link").css("color","#FFFFFF");
-		$('#'+id_code+"_link").css("color","#FF9933");
+		$('#'+id_current+"_link").css("color",orange);
 		
-		//poi div animation and stuff
+		
+		//poi div animation and stuff (hilde old poi, show new one)
 		$('#'+id_old).stop().animate({"margin-top":80}, {easing: 'easeOutQuad', duration:50});
 		setTimeout(function(){
 			$('#'+id_old).css("display","none");
-			$('#'+id_code).css("margin-top","360px");
-			$('#'+id_code).css("display","block");
-			$('#'+id_code).stop().animate({"margin-top":20}, {easing: 'easeOutQuad', duration:600});
+			$('#'+id_current).css("margin-top","360px");
+			$('#'+id_current).css("display","block");
+			$('#'+id_current).stop().animate({"margin-top":20}, {easing: 'easeOutQuad', duration:600});
 		},50);
 	}
+	
+	
 }
 
 
