@@ -186,6 +186,16 @@ table,th,td {
 	width:461px;
 	padding-top:20px;
 }
+
+#home_link_bg{
+	background-image: url(../data/gfx/home.png);
+}
+#print_link_bg{
+	background-image: url(../data/gfx/printer.png);
+}
+#contact_link_bg{
+	background-image: url(../data/gfx/phone.png);
+}
      
 #menu li {
 	float:left;
@@ -202,7 +212,7 @@ table,th,td {
 	display:block;
 	width:109px;
 	/* border:1px solid white; */
-	background-color:rgb(78, 100, 126);
+	/* background-color:rgb(78, 100, 126); */
 }
 
 
