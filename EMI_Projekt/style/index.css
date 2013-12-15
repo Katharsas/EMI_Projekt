@@ -170,10 +170,8 @@ table,th,td {
 }
 
 #topimage {
-	height: 280px;
-	background-color:black;
-	/* background-image: url(../data/gfx/menu_tu.jpg); */
-/* 	overflow:hidden; */
+/*	background-image: url(../data/gfx/menu_tu.jpg);*/ 
+overflow:hidden;
 }
 
 #menu {
