@@ -170,14 +170,15 @@ table,th,td {
 }
 
 #topimage {
-/*	background-image: url(../data/gfx/menu_tu.jpg);*/ 
-overflow:hidden;
+	height:280px;
+	width:700;
+	background-image: url(../data/gfx/HSZ.jpg);
+	overflow:hidden;
 }
 
 #menu {
     list-style:none;
     margin:0 auto;
-/*     background-image: url(../data/gfx/menu.png); */
 }
 
 #title {
