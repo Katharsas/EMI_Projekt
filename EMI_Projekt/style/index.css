@@ -10,6 +10,7 @@
 	padding:0px;
 }
 
+p {margin:0.4em 1em;}
 a {text-decoration: none;}
 a:link{color:#FFFFFF;} 
 a:visited{color:#FFFFFF;} 
@@ -25,20 +26,21 @@ html {
 }
 
 table,th,td {
-	border: 5px solid #2A2A2A;
+	border: 4px solid #DDDDDD;
+	border: 4px solid #DDDDDD;
 	border-collapse: collapse;
 	padding:5px;
 }
 
 #wrap {
 	color:#FFFFFF;
-	width:800px;
+	width:788px;
 	margin:0 auto;
 	padding-bottom:40px;
 }
 
 #top, #main, #printcheck, .poi{
-	border:6px solid #DDDDDD;
+	border:4px solid #DDDDDD;
 	background-color: rgb(78, 100, 126);
 /* 	background-color: rgb(11, 42, 81); */
 	
@@ -58,8 +60,6 @@ table,th,td {
 .center{text-align:center}
 .clear{clear:both;}
 .print{display:none;}
-.nolist{list-style:none;}
-.nolist a {text-shadow: 0 1px 3px #000;}
 .list{list-style:disc inside none;}
 .left{float:left;}
 .right{float:right;}
@@ -100,27 +100,44 @@ table,th,td {
 #main {
 	position:relative;
 	height: 410px;
+	width:100%;
+	text-shadow: 0 1px 3px #000;
 }
 
 #map{
+	/* background-color:green; */
+	width:100%;
+	height:100%;
+}
+
+#mapswitcher {
+	/* background-color:orange; */
 	position:absolute;
-	width: 788px;
-	height: 410px;
+	/* right:0px; */
+	bottom:10px;
+	left:10px;
+	/* font-size:21px;
+	padding:0.5em 1em; */
 }
 
 #links {
+	/* background-color:yellow; */
 	position:absolute;
-	top:0px;
-	left:558px;
-	height:250px;
-	width:200px;
-	padding:100px 30px 20px 0px;
+	right:0px;
+	bottom:5px;
 	font-size:21px;
-	line-height:50px;
+}
+
+#links ul {
+	list-style:none;
 	text-align:right;
 }
 
-.jvectormap-zoomin, .jvectormap-zoomout {
+#links ul li {
+	padding:0.5em 1em;
+}
+
+.jvectormap-zoomin, .jvectormap-zoomout, #mapswitcher {
 	font-size:23px;
     position: absolute;
     -moz-border-radius: 3px;
@@ -164,8 +181,7 @@ table,th,td {
  */
 
 #top {
-/* 	height:190px; */
-	width:788px;
+	width:100%;
 	border-top:0px;
 }
 

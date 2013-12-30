@@ -99,6 +99,16 @@ $(document).ready(function() {
 		});
 	});
 	
+	$("#mapswitcher").click(function () {
+		if($('#map').is(':visible')){
+			$('#map').hide();
+			$('#main').css('height','50px');
+		}
+		else {
+			$('#map').show();
+			$('#main').css('height','410px');
+		}
+	});
 });
 
 

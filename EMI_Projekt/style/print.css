@@ -3,6 +3,7 @@
 	padding:0px;
 }
 
+p {margin:0.3em 0.5em;}
 a {text-decoration: none;}
 a:link, a:visited, a:active{color:#000000;} 
 
@@ -23,7 +24,6 @@ table,th,td {
 .noprint{display:none; !important;}
 .clear{clear:both;}
 .center{text-align:center;}
-.nolist{list-style:none;}
 .list{list-style:disc inside none;}
 .left{float:left;}
 .right{float:right;}
