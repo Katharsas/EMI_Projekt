@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-
 	<head>
 		<!--General-->
-		<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 		<title>TU Dresden Campus</title>
 		<meta name="author" content="unknown" />
 		<!--SVG-Map/JQuery CSS and JavaScript-->
@@ -13,14 +12,14 @@
 		<script src="scripts/jquery.vector-map.js" type="text/javascript"></script>
 		<script src="scripts/jquery.easing.1.3.js" type="text/javascript"></script>
 		<!--General CSS and JavaScript-->
-		<link id="css_link" href="style/index.css" media="screen" rel="stylesheet" type="text/css" />
+		<link id="css_link" href="style/index.css" rel="stylesheet" type="text/css" />
 <!-- 		<link href="style/print.css" media="print" rel="stylesheet" type="text/css" /> -->
 		<script src="scripts/index.js" type="text/javascript"></script>
 	</head>
 
 	<body>
 		<div id="wrap">
-			<div class="print"><h2>Tu Dresden Campus</h2><br></div>
+			<div class="print center"><h1>TU Dresden Campus</h1><br></div>
 			
 			
 			<!-- Top Area -->
@@ -58,15 +57,19 @@
 			<!-- Printing Checkboxes -->
 			
 			<div id="printcheck" class="noprint">
-				<div id="printcheckboxes">
-					<label><input type="checkbox" name="to_print" value="poi1" checked> Schumann</label><br>
-					<label><input type="checkbox" name="to_print" value="poi2" checked> Informatik</label><br>
-					<label><input type="checkbox" name="to_print" value="poi3" checked> SLUB</label><br>
-					<label><input type="checkbox" name="to_print" value="poi4" checked> Beyer</label><br>
-					<label><input type="checkbox" name="to_print" value="poi5" checked> Trefftz</label><br>
+				<div id="printcheckboxeswrapper">
+					<div id="printcheckboxes">
+						<label><input type="checkbox" name="to_print" value="poi1" checked> Schumann</label>
+						<label><input type="checkbox" name="to_print" value="poi2" checked> Informatik</label>
+						<label><input type="checkbox" name="to_print" value="poi3" checked> SLUB</label>
+						<label><input type="checkbox" name="to_print" value="poi4" checked> Beyer</label>
+						<label><input type="checkbox" name="to_print" value="poi5" checked> Trefftz</label>
+						<div class="clear"></div>
+					</div>
 				</div>
-				<div id="printbutton" class="button">Drucken</div>
-			<div id="changebutton" class="button">Vorschau</div>
+				<div id="printbutton" class="button left">Drucken</div>
+				<div id="changebutton" class="button right">Vorschau</div>
+				<div class="clear"></div>
 			</div>
 			
 			
@@ -74,10 +77,7 @@
 			
 			<div id="main" class="noprint">
 				<div id="map"></div>
-				<div id="mapswitcher">
-					_
-				</div>
-				
+				<div id="mapswitcher">_</div>
 				<div id="links">
 					<ul>
 						<li><a id="poi1_link" href="#poi1">Schumann</a></li>
@@ -94,154 +94,172 @@
 			
 			<!-- Point of Interest 1 -->
 			
-			<div id="poi1" class="poi">
-		  <h1>Der Schumann-Bau</h1>
-      <h2>Lage</h2>
-      <p class="left"><img  src="S_1.jpg" height="100px" width="100px"/></p>
-      <p>Das Gebäude des Schumann Baus in Dresden ist ein Beispiel für den Monumentalstil innerhalb der Dresdner Reformarchitektur.<br>
-      Es ist heute die Gedenkstätte Münchner Platz Dresden und Teil des Campus der TU Dresden.
-      </p>
-	  <p class="clear"></p>
-      <h2>Geschichte</h2>
-      <p>Das Gebäude wurde 1902 bis 1907 von Oskar Kramer erbaut.<br>
-        1907 war der Umzug in das neue Königlich-Sächsische Landgerichtsgebäude am Münchner Platz erfolgt, das ab 1902 nach Plänen von Oskar Kramer neu gebaut worden war.<br> 
-        Auch in der Zeit der Weimarer Republik und des Nationalsozialismus sowie in der Anfangszeit der DDR blieb das Gebäude mit seiner berüchtigten Haftanstalt der Sitz des Dresdner Landgerichts.<br> 
-        Auch dieses Bauwerk am Rande der Südvorstadt wurde 1945 durch alliierte Bomben beschädigt, jedoch längst nicht zerstört.<br>
-        Das Bezirksgericht Dresden ersetzte 1952 das abgeschaffte Landgericht und hatte noch bis 1956 seinen Sitz am Münchner Platz.<br> 
-        Danach zog es in das ehemalige Amtsgerichtsgebäude an der Lothringer Straße um. In der heutigen Gedenkstätte Münchner Platz Dresden wurden sechs Todeszellen der ehemaligen, ans Landgericht angeschlossenen Dresdner Haupthaftanstalt in unverändertem Zustand belassen.<br> 
-        Sie beherbergen heute eine kleine Ausstellung zur Geschichte des Landgerichts. Das Gebäude wird seit 1964 durch die TU Dresden genutzt und ist heute der Georg-Schumann-Bau der TU Dresden (Münchner Platz 3, Fakultät Wirtschaftswissenschaften und Maschinenwesen),<br> 
-        benannt nach dem Widerstandskämpfer Georg Schumann. 
-      </p>
-      <h2>Architektur</h2>
-      <p> Kramer kombinierte bei dem Bau im Stil der Reformbaukunst „historisierende Motive frei assoziierend, aber anders als die streng historisierende Architektur“.<br> 
-      Er benutzte überwiegend neoromanische Motive, und wenige Jugendstilelemente auf freie assoziative Art und Weise.<br> 
-      Auch historische Motive wie Burg mit Wehrturm und Festung, hohe dominante Dächer, viele verschiedene Fensterformen, Sandstein- und Putzflächen verwendete er bei dem Bau.<br> 
-      Diese Baukörper setzte der Architekt auf das Stadtbild prägende, monumentale Art und Weise ein.
-      </p>
-			</div>
+			<div id="poi1" class="poi"><div class="content">
+				<h1>Der Schumann-Bau</h1>
+				<h2>Lage</h2>
+				<p class="left"><img src="S_1.jpg" height="100" width="100" alt="Schumann-Bau"/></p>
+				<p>
+					Das Gebäude des Schumann Baus in Dresden ist ein Beispiel für den Monumentalstil innerhalb der Dresdner Reformarchitektur.<br>
+					Es ist heute die Gedenkstätte Münchner Platz Dresden und Teil des Campus der TU Dresden.
+				</p>
+				<p class="clear"></p>
+				<h2>Geschichte</h2>
+				<p>
+					Das Gebäude wurde 1902 bis 1907 von Oskar Kramer erbaut.<br>
+					1907 war der Umzug in das neue Königlich-Sächsische Landgerichtsgebäude am Münchner Platz erfolgt, das ab 1902 nach Plänen von Oskar Kramer neu gebaut worden war.<br> 
+					Auch in der Zeit der Weimarer Republik und des Nationalsozialismus sowie in der Anfangszeit der DDR blieb das Gebäude mit seiner berüchtigten Haftanstalt der Sitz des Dresdner Landgerichts.<br> 
+					Auch dieses Bauwerk am Rande der Südvorstadt wurde 1945 durch alliierte Bomben beschädigt, jedoch längst nicht zerstört.<br>
+					Das Bezirksgericht Dresden ersetzte 1952 das abgeschaffte Landgericht und hatte noch bis 1956 seinen Sitz am Münchner Platz.<br> 
+					Danach zog es in das ehemalige Amtsgerichtsgebäude an der Lothringer Straße um. In der heutigen Gedenkstätte Münchner Platz Dresden wurden sechs Todeszellen der ehemaligen, ans Landgericht angeschlossenen Dresdner Haupthaftanstalt in unverändertem Zustand belassen.<br> 
+					Sie beherbergen heute eine kleine Ausstellung zur Geschichte des Landgerichts. Das Gebäude wird seit 1964 durch die TU Dresden genutzt und ist heute der Georg-Schumann-Bau der TU Dresden (Münchner Platz 3, Fakultät Wirtschaftswissenschaften und Maschinenwesen),<br> 
+					benannt nach dem Widerstandskämpfer Georg Schumann. 
+				</p>
+				<h2>Architektur</h2>
+				<p>
+					Kramer kombinierte bei dem Bau im Stil der Reformbaukunst „historisierende Motive frei assoziierend, aber anders als die streng historisierende Architektur“.<br> 
+					Er benutzte überwiegend neoromanische Motive, und wenige Jugendstilelemente auf freie assoziative Art und Weise.<br> 
+					Auch historische Motive wie Burg mit Wehrturm und Festung, hohe dominante Dächer, viele verschiedene Fensterformen, Sandstein- und Putzflächen verwendete er bei dem Bau.<br> 
+					Diese Baukörper setzte der Architekt auf das Stadtbild prägende, monumentale Art und Weise ein.
+				</p>
+			</div></div>
 			
 			
 			<!-- Point of Interest 2 -->
 			
-			<div id="poi2" class="poi">
-			<h1>Die Fakultät Informatik</h1>
-      <h2>Lage</h2>
-      <p>Die Fakultät Informatik befindet sich auf dem TU-Campus im Süden Dresdens in der Nöthnitzer Straße 46.<br> 
-      Sie ist mit der Straßenbahn-Linie 3 (Haltestelle Nöthnitzer Straße) und mit der Busline 85 in Richtung Striesen zu erreichen.<br> 
-      Der Bus hält am 2. Haltepunkt (Helmholtzstraße) direkt vor dem Gebäude der Fakultät Informatik.
-      </p>
-      <h2>Architektur</h2>
-      <p>Der Neubau der Fakultät Informatik an der TU Dresden ist im heterogenen Umfeld der westlichen Südvorstadt als in sich geschlossene Gesamtanlage konzipiert,<br> 
-      die mit einer mäandrierenden Gebäudeform eine alle und einen Innenhof umschreibt. Diese "Endlos-Struktur" bietet<br>
-      eine Flexibilität für wachsende und schrumpfende Institutsgrößen.
-      </p>
-      <h2>Geschichte</h2>
-      <p>Der Neubau Informatik ist in Arbeitsgemeinschaft mit dem Architekturbüro AG Zimmermann, Dresden, entstanden.<br> 
-      Im April 2002 wurde mit den Bauarbeiten begonnen, welche im Juni 2006 abgeschlossen waren.<br>
-      Die Baukosten beliefen sich auf 35.600.000 EUR dabei wurden allein 8.200.000 EUR für Technische Anlagen ausgegeben.
-      </p>
-       <h2>Ausstattung</h2>
-	   <p>
-       Das Gebäude ist mit einer Vielzahl installationsreicher Labore, 24-Stunden-Rechnerpool, intelligentem Lüftungs- und Klimakonzept, Aula und Seminarräumen ausgestattet.<br>
-		Die Kälteversorgung wird mittels Geothermie über einen Erd-Flächenkollektor unterhalb eines Regenrückhaltebeckens sichergestellt.
-		</p>
-		</div>
+			<div id="poi2" class="poi"><div class="content">
+				<h1>Die Fakultät Informatik</h1>
+				<h2>Lage</h2>
+				<p>
+					Die Fakultät Informatik befindet sich auf dem TU-Campus im Süden Dresdens in der Nöthnitzer Straße 46.<br> 
+					Sie ist mit der Straßenbahn-Linie 3 (Haltestelle Nöthnitzer Straße) und mit der Busline 85 in Richtung Striesen zu erreichen.<br> 
+					Der Bus hält am 2. Haltepunkt (Helmholtzstraße) direkt vor dem Gebäude der Fakultät Informatik.
+				</p>
+				<h2>Architektur</h2>
+				<p>
+					Der Neubau der Fakultät Informatik an der TU Dresden ist im heterogenen Umfeld der westlichen Südvorstadt als in sich geschlossene Gesamtanlage konzipiert,<br> 
+					die mit einer mäandrierenden Gebäudeform eine alle und einen Innenhof umschreibt. Diese "Endlos-Struktur" bietet<br>
+					eine Flexibilität für wachsende und schrumpfende Institutsgrößen.
+				</p>
+				<h2>Geschichte</h2>
+				<p>
+					Der Neubau Informatik ist in Arbeitsgemeinschaft mit dem Architekturbüro AG Zimmermann, Dresden, entstanden.<br> 
+					Im April 2002 wurde mit den Bauarbeiten begonnen, welche im Juni 2006 abgeschlossen waren.<br>
+					Die Baukosten beliefen sich auf 35.600.000 EUR dabei wurden allein 8.200.000 EUR für Technische Anlagen ausgegeben.
+				</p>
+				<h2>Ausstattung</h2>
+				<p>
+					Das Gebäude ist mit einer Vielzahl installationsreicher Labore, 24-Stunden-Rechnerpool, intelligentem Lüftungs- und Klimakonzept, Aula und Seminarräumen ausgestattet.<br>
+					Die Kälteversorgung wird mittels Geothermie über einen Erd-Flächenkollektor unterhalb eines Regenrückhaltebeckens sichergestellt.
+				</p>
+			</div></div>
 			
 			
 			<!-- Point of Interest 3 -->
 			
-			<div id="poi3" class="poi">
-			<h1>Die Sächsische Landes- und Universitätsbibliothek</h1>
-      <h2>Lage</h2>	
-      <p>Die SLUB bezog 2002 einen großen Neubau am Zelleschen Weg, in dem die Bestände zusammengeführt wurden.<br>
-      Sie gehört mit fast neun Millionen Bestandseinheiten zu den größten Bibliotheken in Deutschland.
-      </p>
-      <h2>Architektur</h2>
-      <p>Das Gebäude besitzt neben den zwei aufragenden Gebäudeteilen und dem Eingangsbereich keine Fassade. Es ist von der Straße aus zusätzlich von einem Wall umgeben, auf dem sich noch die alte Bepflanzung des Sportplatzes durch Linden befindet.<br> 
-      Das Dach des ersten Geschosses ist begehbar und bepflanzt. Außerdem befinden sich dort große Fensterflächen zur Tageslichtbeleuchtung der Bibliothek.<br> 
-      Ein weiterer Eingang liegt im 2. Stockwerk im nördlichen Gebäudeteil.
-      Die beiden aufragenden Blöcke besitzen sehr wenige Fenster und sind mit gelbem Thüringer Travertin verkleidet. Im südlichen Block befinden sich u. a. die Büros der Verwaltung und die Deutsche Fotothek;<br> 
-      während sich im anderen Teil v. a. öffentliche Bereiche wie das Buchmuseum, eine Cafeteria und Veranstaltungssäle befinden.
-      Da die meisten Teile der Bibliothek unterirdisch liegen, ist die Größe der Bibliothek von außen kaum erkennbar.<br> 
-      Insgesamt zwei Stockwerke befinden sich unter der ebenerdigen ersten Etage.
-      </p>
-      <h2>Geschichte</h2>
-      <p>Die Universitätsbibliothek wurde 1828 als Bibliothek der Königlich-Sächsischen Bildungsanstalt angelegt. Zwischen 1851 und 1890 wurde die Bildungsanstalt als Königlich-Sächsische Polytechnische Schule bezeichnet.<br> 
-      1872 wurden dann Hochschule und Bibliothek in die Nähe des heutigen Hauptbahnhofs verlagert. 1890 wurde aus der Sammlung die Bibliothek der Technischen Hochschule und damit eine Hochschulbibliothek nach heutigem Ermessen.<br>
-      1945 wurde auch die Universitätsbibliothek zerstört und der Bestand reduziert. Es erfolgte die Verlegung der Bibliothek in eine Villa auf dem gegenwärtigen Campus der Universität,<br> 
-      in dem jetzt das Rektorat der TU Dresden sitzt. Unter der Leitung von Helene Benndorf erfolgte der Neuaufbau des vernichteten Sachkatalogs, aber auch die Errichtung des Hochschul-Zentralkatalogs und die Wiedereröffnung der Patentschriftenstelle.<br> 
-      Die Umbenennung in Technische Universität erfolgte 1961, womit sich auch die Bezeichnung als Universitätsbibliothek ergab. Seit 1977 werden die Ausleihen in den Sektions- bzw. heutigen Zweigbibliotheken zentral gesteuert.<br> 
-      Nach 1990 wurde die TU Dresden zur Volluniversität ausgebaut und so die Bibliothek um Zweigbibliotheken der Wirtschafts- und Rechtswissenschaften ergänzt. 1992 erfolgte die Zusammenführung von TU und der Hochschule für Verkehrswesen und damit auch die Übernahme deren Bibliothek.<br> 
-      Auch 1993 wurde die Universitätsbibliothek noch einmal um eine Zweigbibliothek erweitert, als die Forschungs- und Lehreinrichtungen der aufgelösten Medizinischen Akademie Dresden der TU zugeordnet wurde. 1997 zog die Zweigbibliothek Erziehungswissenschaften in die August-Bebel-Straße um.<br> 
-      Im darauffolgenden Jahr erfolgte die Eröffnung der Bereichsbibliothek Dre.Punct, in der mehrere Fakultäts-Bibliotheken aufgingen.<br>
-      Mit dem Zusammenschluss mit der Landesbibliothek begann 1999 der Neubau des Zentralgebäudes im Campus der TU Dresden. Am 1. August 2002 erfolgte die Öffnung der SLUB für die Nutzer. 
-      </p>
-      <h2>Bestand</h2>
-      <p>Die Bibliothek führt 5,19 Mio. Bestandseinheiten. Sie ist Sondersammelgebietsbibliothek der Deutschen Forschungsgemeinschaft für die Bereiche „Zeitgenössische Kunst ab 1945“ und „Technikgeschichte“.<br> 
-      Über deren Sammlungsthemen wie Werbefotografie, Dokumentarfotografie und Fotografiekunst sowie Technikfotografie reichen beide Sammlungen bis in die Bestände der Deutschen Fotothek.<br> 
-      Der erste erhaltene Index der Bestände der Landesbibliothek stammt aus dem Jahr 1574 und kann auch im Internet durchsucht werden. Weitere Dienste im Internet bietet zum Beispiel das Kartenforum mit historischen Karten Sachsens und die Fotothek,<br> 
-      die viele Bilddokumente zum Recherchieren anbietet.
-      </p>
-			</div>
+			<div id="poi3" class="poi"><div class="content">
+				<h1>Die Sächsische Landes- und Universitätsbibliothek</h1>
+				<h2>Lage</h2>	
+				<p>
+					Die SLUB bezog 2002 einen großen Neubau am Zelleschen Weg, in dem die Bestände zusammengeführt wurden.<br>
+					Sie gehört mit fast neun Millionen Bestandseinheiten zu den größten Bibliotheken in Deutschland.
+				</p>
+				<h2>Architektur</h2>
+				<p>
+					Das Gebäude besitzt neben den zwei aufragenden Gebäudeteilen und dem Eingangsbereich keine Fassade. Es ist von der Straße aus zusätzlich von einem Wall umgeben, auf dem sich noch die alte Bepflanzung des Sportplatzes durch Linden befindet.<br> 
+					Das Dach des ersten Geschosses ist begehbar und bepflanzt. Außerdem befinden sich dort große Fensterflächen zur Tageslichtbeleuchtung der Bibliothek.<br> 
+					Ein weiterer Eingang liegt im 2. Stockwerk im nördlichen Gebäudeteil.
+					Die beiden aufragenden Blöcke besitzen sehr wenige Fenster und sind mit gelbem Thüringer Travertin verkleidet. Im südlichen Block befinden sich u. a. die Büros der Verwaltung und die Deutsche Fotothek;<br> 
+					während sich im anderen Teil v. a. öffentliche Bereiche wie das Buchmuseum, eine Cafeteria und Veranstaltungssäle befinden.
+					Da die meisten Teile der Bibliothek unterirdisch liegen, ist die Größe der Bibliothek von außen kaum erkennbar.<br> 
+					Insgesamt zwei Stockwerke befinden sich unter der ebenerdigen ersten Etage.
+				</p>
+				<h2>Geschichte</h2>
+				<p>
+					Die Universitätsbibliothek wurde 1828 als Bibliothek der Königlich-Sächsischen Bildungsanstalt angelegt. Zwischen 1851 und 1890 wurde die Bildungsanstalt als Königlich-Sächsische Polytechnische Schule bezeichnet.<br> 
+					1872 wurden dann Hochschule und Bibliothek in die Nähe des heutigen Hauptbahnhofs verlagert. 1890 wurde aus der Sammlung die Bibliothek der Technischen Hochschule und damit eine Hochschulbibliothek nach heutigem Ermessen.<br>
+					1945 wurde auch die Universitätsbibliothek zerstört und der Bestand reduziert. Es erfolgte die Verlegung der Bibliothek in eine Villa auf dem gegenwärtigen Campus der Universität,<br> 
+					in dem jetzt das Rektorat der TU Dresden sitzt. Unter der Leitung von Helene Benndorf erfolgte der Neuaufbau des vernichteten Sachkatalogs, aber auch die Errichtung des Hochschul-Zentralkatalogs und die Wiedereröffnung der Patentschriftenstelle.<br> 
+					Die Umbenennung in Technische Universität erfolgte 1961, womit sich auch die Bezeichnung als Universitätsbibliothek ergab. Seit 1977 werden die Ausleihen in den Sektions- bzw. heutigen Zweigbibliotheken zentral gesteuert.<br> 
+					Nach 1990 wurde die TU Dresden zur Volluniversität ausgebaut und so die Bibliothek um Zweigbibliotheken der Wirtschafts- und Rechtswissenschaften ergänzt. 1992 erfolgte die Zusammenführung von TU und der Hochschule für Verkehrswesen und damit auch die Übernahme deren Bibliothek.<br> 
+					Auch 1993 wurde die Universitätsbibliothek noch einmal um eine Zweigbibliothek erweitert, als die Forschungs- und Lehreinrichtungen der aufgelösten Medizinischen Akademie Dresden der TU zugeordnet wurde. 1997 zog die Zweigbibliothek Erziehungswissenschaften in die August-Bebel-Straße um.<br> 
+					Im darauffolgenden Jahr erfolgte die Eröffnung der Bereichsbibliothek Dre.Punct, in der mehrere Fakultäts-Bibliotheken aufgingen.<br>
+					Mit dem Zusammenschluss mit der Landesbibliothek begann 1999 der Neubau des Zentralgebäudes im Campus der TU Dresden. Am 1. August 2002 erfolgte die Öffnung der SLUB für die Nutzer. 
+				</p>
+				<h2>Bestand</h2>
+				<p>
+					Die Bibliothek führt 5,19 Mio. Bestandseinheiten. Sie ist Sondersammelgebietsbibliothek der Deutschen Forschungsgemeinschaft für die Bereiche „Zeitgenössische Kunst ab 1945“ und „Technikgeschichte“.<br> 
+					Über deren Sammlungsthemen wie Werbefotografie, Dokumentarfotografie und Fotografiekunst sowie Technikfotografie reichen beide Sammlungen bis in die Bestände der Deutschen Fotothek.<br> 
+					Der erste erhaltene Index der Bestände der Landesbibliothek stammt aus dem Jahr 1574 und kann auch im Internet durchsucht werden. Weitere Dienste im Internet bietet zum Beispiel das Kartenforum mit historischen Karten Sachsens und die Fotothek,<br> 
+					die viele Bilddokumente zum Recherchieren anbietet.
+				</p>
+			</div></div>
 			
 			
 			
 			<!-- Point of Interest 4 -->
 			
-			<div id="poi4" class="poi">
+			<div id="poi4" class="poi"><div class="content">
 				<h1>Der Beyer-Bau</h1>
-        <h2>Lage</h2>
-        <p>George-Bähr-Str. 1, 01069 Dresden. 
-        Gegenüber des Beyer Baus liegt der Potthof-Bau.<br> 
-        Von dem östlichen Seiteneingang des Beyer Baus ist das HSZ einsehbar.
-        </p>
-        <h2>Architektur</h2>
-        <p> Der Gebäudekomplex besteht aus einem östlichen Hauptblock, der zwei Innenhöfe umschließt, einem schmaleren Flügelbau und einem Turm, der zu „den ersten Hochhausbauten in Deutschland“ gehört und zu den Wahrzeichen der Technischen Universität Dresden zählt.<br>
-        Bemerkenswert sind die die roten Klinkerfassaden. Damit orientierte sich Dülfer an den älteren Gebäuden, die von Karl Weißbach errichtet wurden. Die Ästhetik des Baustoffes und die „Materialgerechtigkeit“ demonstrieren eine neue Form- und Materialgesinnung, die Dülfer eigen war.<br> 
-        So hatte sich Dülfer der Dresdner Reformbewegung angeschlossen und war Mitglied der Zunft geworden. Die Fläche der Klinkerfassade wird durch „ornamentartig vorkragende Ziegel und farbig gefaßte Sandstein- und Sichtbetonflächen“ unterschiedlich strukturiert.<br> 
-        Vom norddeutschen Landhausbau beeinflusst sind die Walmdächer und leicht gewölbten Flacherker.<br>
-        Dülfer gliederte den Turm durch viele große und hohe Fenster, die sich mit Lisenen abwechseln. 
-        Damit wird der Eindruck von Monumentalität erzielt. Sowohl die hohen Fenster, als auch die schmalen Lisenen betonen die Vertikale und führen den Blick automatisch zum Turm, in dem sich seit 1968 das Lohrmann-Observatorium befindet.<br> 
-        Auch der Turm war einst von geometrisierenden, vertikal verlaufenden Klinkern geschmückt. Nach dem Krieg wurden diese abgenommen und auf eine Verkleidung verzichtet.
-        </p>
-        <h2>Geschichte</h2>	
-        <p>Der heutige Beyer-Bau wurde am 11. Oktober 1913 – in Anwesenheit des sächsischen Königs Friedrich August III. – seiner Bestimmung übergeben.<br> 
-        Er wurde als einziges Gebäude einer von Dülfer geplanten „Hochschulstadt“ realisiert.<br> 
-        Die unvollendete Fassade der Südost-Ansicht zeugt davon, dass die weitergehende Planung für ein Zentralgebäude am Fritz-Förster-Platz nicht umgesetzt wurde.<br>
-        Obwohl das Dachgeschoss durch Kriegseinwirkungen ausbrannte und somit alle Holzbauteile des Dachstuhls sowie die kupferne Verkleidung des Turms verloren gingen,<br>
-        wurden in den Nachkriegsjahren nur geringe Veränderungen vorgenommen, so dass die restliche Bausubstanz des Gebäudes weitgehend original erhalten ist.
-        </p>
-        <h2>Fachrichtungen</h2>
-        <p>Der Beyer-Bau der TU Dresden wurde 1910 bis 1913 für die Abteilung Bauingenieurwesen der TH  Dresden von Martin Dülfer errichtet.<br> 
-        Das denkmalgeschützte Gebäude beherbergt auch heute noch die Fakultät Bauingenieurwesen, das Institut für Angewandte Photophysik der Fachrichtung Physik<br>
-        sowie Einrichtungen der Fakultät Geowissenschaften. 
-        </p>
-			</div>
+				<h2>Lage</h2>
+				<p>
+					George-Bähr-Str. 1, 01069 Dresden. 
+					Gegenüber des Beyer Baus liegt der Potthof-Bau.<br> 
+					Von dem östlichen Seiteneingang des Beyer Baus ist das HSZ einsehbar.
+				</p>
+				<h2>Architektur</h2>
+				<p>
+					Der Gebäudekomplex besteht aus einem östlichen Hauptblock, der zwei Innenhöfe umschließt, einem schmaleren Flügelbau und einem Turm, der zu „den ersten Hochhausbauten in Deutschland“ gehört und zu den Wahrzeichen der Technischen Universität Dresden zählt.<br>
+					Bemerkenswert sind die die roten Klinkerfassaden. Damit orientierte sich Dülfer an den älteren Gebäuden, die von Karl Weißbach errichtet wurden. Die Ästhetik des Baustoffes und die „Materialgerechtigkeit“ demonstrieren eine neue Form- und Materialgesinnung, die Dülfer eigen war.<br> 
+					So hatte sich Dülfer der Dresdner Reformbewegung angeschlossen und war Mitglied der Zunft geworden. Die Fläche der Klinkerfassade wird durch „ornamentartig vorkragende Ziegel und farbig gefaßte Sandstein- und Sichtbetonflächen“ unterschiedlich strukturiert.<br> 
+					Vom norddeutschen Landhausbau beeinflusst sind die Walmdächer und leicht gewölbten Flacherker.<br>
+					Dülfer gliederte den Turm durch viele große und hohe Fenster, die sich mit Lisenen abwechseln. 
+					Damit wird der Eindruck von Monumentalität erzielt. Sowohl die hohen Fenster, als auch die schmalen Lisenen betonen die Vertikale und führen den Blick automatisch zum Turm, in dem sich seit 1968 das Lohrmann-Observatorium befindet.<br> 
+					Auch der Turm war einst von geometrisierenden, vertikal verlaufenden Klinkern geschmückt. Nach dem Krieg wurden diese abgenommen und auf eine Verkleidung verzichtet.
+				</p>
+				<h2>Geschichte</h2>	
+				<p>
+					Der heutige Beyer-Bau wurde am 11. Oktober 1913 – in Anwesenheit des sächsischen Königs Friedrich August III. – seiner Bestimmung übergeben.<br> 
+					Er wurde als einziges Gebäude einer von Dülfer geplanten „Hochschulstadt“ realisiert.<br> 
+					Die unvollendete Fassade der Südost-Ansicht zeugt davon, dass die weitergehende Planung für ein Zentralgebäude am Fritz-Förster-Platz nicht umgesetzt wurde.<br>
+					Obwohl das Dachgeschoss durch Kriegseinwirkungen ausbrannte und somit alle Holzbauteile des Dachstuhls sowie die kupferne Verkleidung des Turms verloren gingen,<br>
+					wurden in den Nachkriegsjahren nur geringe Veränderungen vorgenommen, so dass die restliche Bausubstanz des Gebäudes weitgehend original erhalten ist.
+				</p>
+				<h2>Fachrichtungen</h2>
+				<p>
+					Der Beyer-Bau der TU Dresden wurde 1910 bis 1913 für die Abteilung Bauingenieurwesen der TH  Dresden von Martin Dülfer errichtet.<br> 
+					Das denkmalgeschützte Gebäude beherbergt auch heute noch die Fakultät Bauingenieurwesen, das Institut für Angewandte Photophysik der Fachrichtung Physik<br>
+					sowie Einrichtungen der Fakultät Geowissenschaften.
+				</p>
+			</div></div>
 			
 			
 			<!-- Point of Interest 5 -->
 			
-			<div id="poi5" class="poi">
-		  <h1>Der Trefftz-Bau</h1>
-      <h2>Lage</h2>
-      <p>Der Trefftz-Bau steht am östlichen Campusende und flankiert das Gebäude der Fachrichtung Physik an seinem südlichen und den Willers-Bau, das Gebäude der Fachrichtung Mathematik, an seinem nördlichen Ende.<br> 
-      Östlich des Trefftz-Baus wurde 1999 bis 2003 das neue Hauptgebäude der SLUB Dresden errichtet.
-	  </p>
-			<h2>Architektur</h2>
-      <p>Die Architekten Walter Henn und Heinrich Rettig orientierten sich beim Entwurf des 1953 bis 1955 errichteten Trefftz-Baus an den Formen des Barkhausen Baus, der von 1951 bis 1954 von Karl Wilhelm Ochs erbaut worden war.<br> 
-      Nach mehrfachen Anbauten für das Universätsrechenzentrum wurde der Trefftz-Bau in den Jahren 2008 und 2009 umfassend saniert und erhielt dabei unter anderem einen gläsernen Fahrstuhl.
-      Das Hörsaalgebäude zeigte am nördlichen Giebel bis zu seiner letzten Erweiterung eine große astronomische Uhr, an der mehrere Daten ablesbar sind, unter anderem Sonnenauf- und -untergangszeiten und Mondphasen.<br> 
-      Diese Uhr befindet sich seit 2007 nur wenige Meter entfernt an der Ostfront des Willers-Baus. Friedrich Adolf Willers war es auch, der die Berechnungen für die Uhr vornahm; die Modelle der Zifferblätter entwarf seine Tochter Annemarie Willers.<br>
-      Eine auf Granitsäulenpaaren ruhende Brücke führt vom Trefftz-Bau zum Willers-Bau, der von Walter Henn, Karl Wilhelm Ochs und Heinrich Rettig geschaffen wurde.<br>
-        Auf dem Platz vor dem nördlichen Giebel steht eine überlebensgroße Skulptur.
-      </p>
-      <h2>Geschichte</h2>
-      <p>Seit 1994 trägt das in den fünfziger Jahren errichtete Gebäude den Namen des in den zwanziger Jahren tätigen Professor für Technische Mechanik und Angewandte Mathematik Erich Trefftz.
-      </p>
-      <h2>Fachrichtungen</h2>
-      <p>Neben zwei großen Hörsälen ist in dem denkmalgeschützten Gebäude auch das Zentrum für Informationsdienste und Hochleistungsrechnen (ZIH) untergebracht.
-      </p>
-      </div>
+			<div id="poi5" class="poi"><div class="content">
+				<h1>Der Trefftz-Bau</h1>
+				<h2>Lage</h2>
+				<p>
+					Der Trefftz-Bau steht am östlichen Campusende und flankiert das Gebäude der Fachrichtung Physik an seinem südlichen und den Willers-Bau, das Gebäude der Fachrichtung Mathematik, an seinem nördlichen Ende.<br> 
+					Östlich des Trefftz-Baus wurde 1999 bis 2003 das neue Hauptgebäude der SLUB Dresden errichtet.
+				</p>
+				<h2>Architektur</h2>
+				<p>
+					Die Architekten Walter Henn und Heinrich Rettig orientierten sich beim Entwurf des 1953 bis 1955 errichteten Trefftz-Baus an den Formen des Barkhausen Baus, der von 1951 bis 1954 von Karl Wilhelm Ochs erbaut worden war.<br> 
+					Nach mehrfachen Anbauten für das Universätsrechenzentrum wurde der Trefftz-Bau in den Jahren 2008 und 2009 umfassend saniert und erhielt dabei unter anderem einen gläsernen Fahrstuhl.
+					Das Hörsaalgebäude zeigte am nördlichen Giebel bis zu seiner letzten Erweiterung eine große astronomische Uhr, an der mehrere Daten ablesbar sind, unter anderem Sonnenauf- und -untergangszeiten und Mondphasen.<br> 
+					Diese Uhr befindet sich seit 2007 nur wenige Meter entfernt an der Ostfront des Willers-Baus. Friedrich Adolf Willers war es auch, der die Berechnungen für die Uhr vornahm; die Modelle der Zifferblätter entwarf seine Tochter Annemarie Willers.<br>
+					Eine auf Granitsäulenpaaren ruhende Brücke führt vom Trefftz-Bau zum Willers-Bau, der von Walter Henn, Karl Wilhelm Ochs und Heinrich Rettig geschaffen wurde.<br>
+					Auf dem Platz vor dem nördlichen Giebel steht eine überlebensgroße Skulptur.
+				</p>
+				<h2>Geschichte</h2>
+				<p>
+					Seit 1994 trägt das in den fünfziger Jahren errichtete Gebäude den Namen des in den zwanziger Jahren tätigen Professor für Technische Mechanik und Angewandte Mathematik Erich Trefftz.
+				</p>
+				<h2>Fachrichtungen</h2>
+				<p>
+					Neben zwei großen Hörsälen ist in dem denkmalgeschützten Gebäude auch das Zentrum für Informationsdienste und Hochleistungsrechnen (ZIH) untergebracht.
+				</p>
+			</div></div>
 			
 		</div>
 	</body>

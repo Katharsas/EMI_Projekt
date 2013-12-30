@@ -11,7 +11,7 @@
  * Do not use any underscore or the splitter String (see below) in any id!
  */
 var id = ["poi1","poi2","poi3","poi4","poi5"];
-var id_current; //currently selected id
+var id_current = null; //currently selected id
 var splitter = "--";//seperates id name from path suffix,
 					//where suffix is number of path for a certain id,
 					//eg: poi1--0, poi1--1, etc., must not be underscore!
@@ -71,7 +71,7 @@ $(document).ready(function() {
 	 */
 	$("#print_link").click(function () {
 		$('#main').hide();
-		$('#printcheck').show();
+		$('#printcheck').css('display', 'inline-block');
 		
 		//show correct containers depending on each check-boxes starting state
 		$(':checkbox').each(function () {
@@ -83,18 +83,22 @@ $(document).ready(function() {
 			checkCheckBox(this);
 		});	
 		
-		//button for printing
-		$("#printbutton").click(function () {
-			$('#printcheck').hide();//hide print options container
-			window.print();//PRINT!!!
-			$('#printcheck').show();
-			return false;
-		});
-		
 		//button for switching screen style from index.css to print.css and back
 		$("#changebutton").click(function () {
 			if($('#css_link').attr("href")=="style/print.css"){$('#css_link').attr("href","style/index.css");}
 			else{$('#css_link').attr("href","style/print.css");}
+			return false;
+		});
+		
+		//button for printing
+		$("#printbutton").click(function () {
+			if (!($('#css_link').attr("href")=="style/print.css")) {
+				$("#changebutton").click();}
+			var noprints = $('.noprint:visible');
+			$(noprints).hide();
+			window.print();//PRINT!!!
+			noprints.show();
+			$("#changebutton").click();
 			return false;
 		});
 	});
@@ -103,10 +107,14 @@ $(document).ready(function() {
 		if($('#map').is(':visible')){
 			$('#map').hide();
 			$('#main').css('height','50px');
+			$('#links ul li').css('float','left');
+			$("#mapswitcher").html('☐');
 		}
 		else {
 			$('#map').show();
 			$('#main').css('height','410px');
+			$('#links ul li').removeAttr('style');
+			$("#mapswitcher").html('_');
 		}
 	});
 });
@@ -486,13 +494,21 @@ function switchFlatPoi(flatCode){
 		
 		
 		//poi div animation and stuff (hilde old poi, show new one)
-		$('#'+id_old).stop().animate({"margin-top":80}, {easing: 'easeOutQuad', duration:50});
-		setTimeout(function(){
-			$('#'+id_old).css("display","none");
+		var oldExists = id_old != null;
+		if (oldExists) {//down-animation for old div
+			$('#'+id_old).stop().animate({"margin-top":80}, {easing: 'easeOutQuad', duration:50});}
+		setTimeout(function(){//round about when down-animation finishes (TIMES ARE NOT EXACT!)
+			if(oldExists) {
+				$('#'+id_old).css("display","none");}
 			$('#'+id_current).css("margin-top","360px");
 			$('#'+id_current).css("display","block");
-			$('#'+id_current).stop().animate({"margin-top":20}, {easing: 'easeOutQuad', duration:600});
+			$('#'+id_current).stop().animate({"margin-top":0}, {easing: 'easeOutQuad', duration:600});
+			setTimeout(function(){//make sure down-animation has finished
+				if(oldExists) {//remove margin from down-animation
+					$('#'+id_old).css("margin-top","0px");}
+			},50);
 		},50);
+		
 	}
 	
 	
