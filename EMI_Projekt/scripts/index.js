@@ -10,7 +10,7 @@
  * They must be IDENTICAL to the IDs used in HTML for the POI-DIV-Containers!!!
  * Do not use any underscore or the splitter String (see below) in any id!
  */
-var id = ["poi1","poi2","poi3","poi4","poi5"];
+var id = ["poi1","poi2","poi3","poi4","poi5","poi6"];
 var id_current = null; //currently selected id
 var splitter = "--";//seperates id name from path suffix,
 					//where suffix is number of path for a certain id,
@@ -65,6 +65,7 @@ $(document).ready(function() {
 	$("#"+id[2]+"_link").click(function () {switchPoi(id[2]);return false;});
 	$("#"+id[3]+"_link").click(function () {switchPoi(id[3]);return false;});
 	$("#"+id[4]+"_link").click(function () {switchPoi(id[4]);return false;});
+	$("#"+id[5]+"_link").click(function () {switchPoi(id[5]);return false;});
 	
 	/**
 	 * Printing
@@ -139,7 +140,7 @@ function getPathInformation() {
 	paths['campus']=
 	[
 		{	"path": "M654.001,272.253l20.75,15.25l18,13.5l42.25,29.25l9,7l12.5,12.5		l15,10.5l31.25,21.75l24.5,15.75l15.25,11.5l38.75,27.5l21.25,15l21,14.75l18.5,11.5l24.75,12.5l19,6l18.5,6.25l28.5,7.75l24,6.75		l22.5,4.5l23,3.5l22,3.25l16.75,0.75l37,2.5l29,2.5l36.75,2.75l30,1.75l29.75,3l28.5,2l31,1.75v5.5l-0.75,10.25l-0.25,12.25		l-1.75,13.75l-0.75,12.5l-1.25,18l0.25,12.75l-1.75,14.75l-0.75,12.75l-0.75,12.75l-3,21l-1.25,12l-17.5-0.25l-16-1.75l-8.5,1		l-10,2.5l-12.25,0.75c0,0-8.5-0.5-9.25-0.5s-9.5-3.5-9.5-3.5l-11-4.5l-12.75-3.5l-14.25-1.5l-18.75-0.5l-2.5,12.5h-6.25l-21.75-0.5		l-12.25-0.5l-28-3l-27.75-4.5l-23.25-2l-40.75-4.5l-22.75-1.5l-20.25-3l-34.25-3.25l-2.5,2.75l-9.75,27l-4.75,14.25l-3,7.5		l-6.5,6.5l-8.25,2.25l-34,3.5l-18.5,0.75l-16.75,1.25l-20.5-0.25l-20.5-0.25l-25.25,0.5l-28.75,1.5l-35.25,1.75h-37l-48.5-0.25		l-8,16.25l-10,17.25l-9.5,16.25l-11.5,19l-12.25,22l-9.5,16.25l-8.5-3l-11.5-5l-16.5-4l-20.75-6l-20-2.5l-13.25,1l0.5,14.5		l-0.5,15.5l-1.5,23l-6,29.75l-95.75-23.25l-28,89.75l-8,6l-108-33.25l27.5-97.75l-3.5-27.5l-3-26.25l-3.75-23.25l-3.75-30.75		l-4-30.5l-4.25-30.5l-2.5-24.75l-3.75-27.75l-6-38.25l-6.75-53.25l-5-38.25l-20.5-42.5l71.5-41.25l48.75-26.75l47.5-26.5l59.5-31.5		l68-37.75l39.5-21l37-19.25l29.25-16.5L654.001,272.253z",
-			"name": "Ebene_2",
+			"name": "",
 			"color":"#222222"}
 	];
 	
@@ -403,9 +404,12 @@ function getPaths(flatPathInformation) {
 	var paths = {};
 	for (key in flatPathInformation) {
 		paths[key] = {
-			"path":flatPathInformation[key]["path"],
-			"name":flatPathInformation[key]["name"]
+			"path":flatPathInformation[key]["path"]
+			,"name":flatPathInformation[key]["name"]
 		};
+		// if(flatPathInformation[key][name]!="") {
+			// paths[key]["name"] = flatPathInformation[key]["name"];
+		// }
 	}
 	return paths;
 }

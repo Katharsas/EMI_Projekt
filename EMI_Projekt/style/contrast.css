@@ -1,0 +1,8 @@
+html {	
+	font-family:Calibri, Verdana, Arial, sans-serif;
+	background-color: white;
+}
+
+#top, #main, #printcheck, .poi{
+	background-color: black;
+}

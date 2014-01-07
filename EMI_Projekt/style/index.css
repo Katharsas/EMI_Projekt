@@ -43,8 +43,8 @@ table,th,td {
 	background-color: rgb(78, 100, 126);
 	
 	-moz-box-shadow:    1px 3px 5px 0px #000;
-	-webkit-box-shadow: 1px 3px 6px 0px #000;
-	box-shadow:         1px 3px 6px 0px #000;
+	-webkit-box-shadow: 1px 3px 5px 0px #000;
+	box-shadow:         1px 3px 5px 0px #000;
 }
 #warning, #main, #printcheck, #printbutton, .poi{
 	/* margin-top:20px; */
@@ -138,14 +138,22 @@ table,th,td {
 	font-size:23px;
     position: absolute;
     -moz-border-radius: 3px;
-    background: #292929;
+    /* background: #292929; */
+	/* background-color:#0B2A51; */
+	background-color:#EEEEEE;
     padding: 3px;
-    color: white;
+    /* color: white; */
+	color:black;
     width: 20px;
     height: 20px;
     cursor: pointer;
     line-height: 20px;
     text-align: center;
+	text-shadow:none;
+	
+	-moz-box-shadow:    1px 1px 4px -1px #000;
+	-webkit-box-shadow: 1px 1px 4px -1px #000;
+	box-shadow:         1px 1px 4px -1px #000;
 }
 
 .jvectormap-zoomin {
@@ -164,6 +172,12 @@ table,th,td {
  * //////////////////////////////////////////////////
  */
 
+ .contentimage {
+	-moz-box-shadow:    1px 1px 3px -1px #000;
+	-webkit-box-shadow: 1px 1px 3px -1px #000;
+	box-shadow:         1px 1px 3px -1px #000;
+ }
+ 
 .poi {
 	position: relative;
 	width:100%;
