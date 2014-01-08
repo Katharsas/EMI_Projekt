@@ -1,6 +1,6 @@
 /*
  * ////////////////////////////////////////////////////////////////////////////////
- * STUFF
+ * VARIABLES AND STUFF
  * ////////////////////////////////////////////////////////////////////////////////
  */
 
@@ -29,121 +29,21 @@ var orange="#FF9933";//orange! also used for highlighting stuff, because orange 
 
 /*
  * ////////////////////////////////////////////////////////////////////////////////
- * FUNCTIONS
+ * SVG MAP DATA
  * ////////////////////////////////////////////////////////////////////////////////
  */
 
+ 
 /**
- * This function is executed when document is ready for interactivity!
- */
-$(document).ready(function() {
-	hidePoiContainers();
-	
-	/**
-	 * SVG-Polygon-Interactivity and SVG-Map Properties
-	 */
-	$("#map").vectorMap(
-	{
-		map : "karten",
-		backgroundColor : "rgb(78, 100, 126)",
-		hoverOpacity : 0.0,
-		hoverColor : false,
-		colors : farben,
-		onRegionClick : function(event, code)
-		{
-			// called when user clicks on svg map, code is the key of the pathmap, eg. code = poi1--0
-			switchFlatPoi(code);
-		}
-	});
-	setUpFloatingMenu();
-	
-	/**
-	 * Klickibunti links to switch POI
-	 */
-	$("#"+id[0]+"_link").click(function () {switchPoi(id[0]);return false;});
-	$("#"+id[1]+"_link").click(function () {switchPoi(id[1]);return false;});
-	$("#"+id[2]+"_link").click(function () {switchPoi(id[2]);return false;});
-	$("#"+id[3]+"_link").click(function () {switchPoi(id[3]);return false;});
-	$("#"+id[4]+"_link").click(function () {switchPoi(id[4]);return false;});
-	$("#"+id[5]+"_link").click(function () {switchPoi(id[5]);return false;});
-	
-	/**
-	 * Printing
-	 */
-	$("#print_link").click(function () {
-		$('#main').hide();
-		$('#printcheck').css('display', 'inline-block');
-		
-		//show correct containers depending on each check-boxes starting state
-		$(':checkbox').each(function () {
-			checkCheckBox(this);
-		});
-		
-		//set-up check-box event listener
-		$(':checkbox').click(function () {
-			checkCheckBox(this);
-		});	
-		
-		//button for preview
-		$("#changebutton").click(function () {
-			switchPreview();
-		});
-		
-		//button for printing
-		$("#printbutton").click(function () {
-			window.print();
-			if(isPreview()) {hidePreview();}
-		});
-	});
-	
-	$("#mapswitcher").click(function () {
-		if($('#map').is(':visible')){
-			$('#map').hide();
-			$('#main').css('height','50px');
-			$('#links ul li').css('float','left');
-			$("#mapswitcher").html('☐');
-		}
-		else {
-			$('#map').show();
-			$('#main').css('height','410px');
-			$('#links ul li').removeAttr('style');
-			$("#mapswitcher").html('_');
-		}
-	});
-});
-
-function switchPreview() {
-	if(!isPreview()) {showPreview();}
-	else {hidePreview();}
-}
-
-function isPreview() {
-	return $('.css_screen[disabled]').length>0;
-}
-
-function showPreview() {
-	$('.css_screen').attr('disabled', 'disabled');
-	$('.css_print').attr('media','screen,print');
-	// $('.css_preview').removeAttr('disabled');
-}
-
-function hidePreview() {
-	$('.css_screen').removeAttr('disabled');
-	$('.css_print').attr('media','print');
-	// $('.css_preview').attr('disabled', 'disabled');
-}
-
-/**
- * SVG Map Creation - Set Values to SVG Background, Image Dimension and HTML Container!
- * If Container has different size, SVG map will be scaled to match Container.
- */
-$.fn.vectorMap("addMap", "karten", {
-	"width": 1600,
-	"height": 1050,
-	"pathes": getPaths(pathInformation)
-});
-
-/**
+ * You can change polygon paths, colours and hover-over tool-tip for the SVG-Map HERE!
+ * "path" - Polygon path from SVG file , should begin with M and end with z!
+ * "name" - Tool-tip for the above polygon. Polygons without tool-tip are currently not possible, only empty ones ("name": ""). Can be chosen freely.
+ * "color" - Colour of the above polygon, usage like in CSS.
+ *
+ * Polygon groups which act as POIs must take a key name from id array, e.g. paths[id[0]] = [...];
+ * All other keys can be chosen (almost) freely but must be unique. They also must not contain any underscore or the Splitter String
+ * (see first section "Variables and stuff").
+ *
  * Returns an association array with multiple paths per key (pathGroups) and an association array per path with all values for this path.
  * To use the returned array with jvectormaps, it must be flattened first, so that there is only one path information array per key!
  */
@@ -355,6 +255,130 @@ function getPathInformation() {
 	return paths;
 }
 
+/*
+ * ////////////////////////////////////////////////////////////////////////////////
+ * WHEN DOCUMENT IS READY
+ * ////////////////////////////////////////////////////////////////////////////////
+ */
+ 
+/**
+ * This function is executed when document is ready for interactivity!
+ */
+$(document).ready(function() {
+	hidePoiContainers();
+	
+	/**
+	 * SVG-Polygon-Interactivity and SVG-Map Properties
+	 */
+	$("#map").vectorMap(
+	{
+		map : "karten",
+		backgroundColor : "rgb(78, 100, 126)",
+		hoverOpacity : 0.0,
+		hoverColor : false,
+		colors : farben,
+		onRegionClick : function(event, code)
+		{
+			// called when user clicks on svg map, code is the key of the pathmap, eg. code = poi1--0
+			switchPoi(code);
+		}
+	});
+	setUpFloatingMenu();
+	
+	/**
+	 * Klickibunti links to switch POI
+	 */
+	$("#"+id[0]+"_link").click(function () {switchPoi(id[0]);return false;});
+	$("#"+id[1]+"_link").click(function () {switchPoi(id[1]);return false;});
+	$("#"+id[2]+"_link").click(function () {switchPoi(id[2]);return false;});
+	$("#"+id[3]+"_link").click(function () {switchPoi(id[3]);return false;});
+	$("#"+id[4]+"_link").click(function () {switchPoi(id[4]);return false;});
+	$("#"+id[5]+"_link").click(function () {switchPoi(id[5]);return false;});
+	
+	/**
+	 * Printing
+	 */
+	$("#print_link").click(function () {
+		$('#main').hide();
+		$('#printcheck').css('display', 'inline-block');
+		
+		//show correct containers depending on each check-boxes starting state
+		$(':checkbox').each(function () {
+			checkCheckBox(this);
+		});
+		
+		//set-up check-box event listener
+		$(':checkbox').click(function () {
+			checkCheckBox(this);
+		});	
+		
+		//button for preview
+		$("#changebutton").click(function () {
+			switchPreview();
+		});
+		
+		//button for printing
+		$("#printbutton").click(function () {
+			window.print();
+			if(isPreview()) {hidePreview();}
+		});
+	});
+	
+	$("#mapswitcher").click(function () {
+		if($('#map').is(':visible')){
+			$('#map').hide();
+			$('#main').css('height','50px');
+			$('#links ul li').css('float','left');
+			$("#mapswitcher").html('☐');
+		}
+		else {
+			$('#map').show();
+			$('#main').css('height','410px');
+			$('#links ul li').removeAttr('style');
+			$("#mapswitcher").html('_');
+		}
+	});
+});
+
+
+/*
+ * ////////////////////////////////////////////////////////////////////////////////
+ * FUNCTIONS
+ * ////////////////////////////////////////////////////////////////////////////////
+ */
+
+/**
+ * Switch from or to print preview style
+ */
+function switchPreview() {
+	if(!isPreview()) {showPreview();}
+	else {hidePreview();}
+}
+
+function isPreview() {
+	return $('.css_screen[disabled]').length>0;
+}
+
+function showPreview() {
+	$('.css_screen').attr('disabled', 'disabled');
+	$('.css_print').attr('media','screen,print');
+}
+
+function hidePreview() {
+	$('.css_screen').removeAttr('disabled');
+	$('.css_print').attr('media','print');
+}
+
+/**
+ * SVG Map Creation - Set Values to SVG Background, Image Dimension and HTML Container!
+ * If Container has different size, SVG map will be scaled to match Container.
+ */
+$.fn.vectorMap("addMap", "karten", {
+	"width": 1600,
+	"height": 1050,
+	"pathes": getPaths(pathInformation)
+});
+
 /**
  * Flattens the pathGroups from getPaths() function to one path per key.
  * Adds --<index of path in pathGroup> suffix to every key (id) String.
@@ -417,9 +441,6 @@ function getPaths(flatPathInformation) {
 			"path":flatPathInformation[key]["path"]
 			,"name":flatPathInformation[key]["name"]
 		};
-		// if(flatPathInformation[key][name]!="") {
-			// paths[key]["name"] = flatPathInformation[key]["name"];
-		// }
 	}
 	return paths;
 }
@@ -437,32 +458,22 @@ function getColors(flatPathInformation) {
 	return colors;
 }
 
-
 /**
- * Hides all poi Containers
+ * Hides all POI Containers
  */
 function hidePoiContainers(){
 	for(var i in id){
-		$('#'+id[i]).css("display","none");
+		$('#'+id[i]).hide();
 	}
 }
 
 /**
- * Shows all poi Containers
+ * Shows all POI Containers
  */
 function showPoiContainers(){
 	for(var i in id){
-		$('#'+id[i]).css("display","block");
+		$('#'+id[i]).show();
 	}
-}
-
-/**
- * Inflates id to flat id and redirects to switchFlatPoi
- */
-function switchPoi(code) {
-	// e.g. code = poi1
-	switchFlatPoi(code+splitter+"0");
-	//argument is e.g. "poi1--0"
 }
 
 /**
@@ -470,11 +481,11 @@ function switchPoi(code) {
  * hides the old poi with "id_old" as id, highlights the according regions on SVG map and the according link.
  * poi containers are animated with jQuery.
  */
-function switchFlatPoi(flatCode){
-	// e.g. flatCode = "poi1--0"
+function switchPoi(anyCode){
+	// e.g. flatCode = "poi1--0" or "poi1"
 	// e.g. id_current = "poi4"
 	
-	var code = flatCode.split(splitter)[0];// e.g. code = "poi1"
+	var code = anyCode.split(splitter)[0];// e.g. code = "poi1"
 	
 	if(code!=id_current && code.indexOf("poi")!=-1){//if new poi is not the old one and code contains "poi"
 	
@@ -532,7 +543,6 @@ function switchFlatPoi(flatCode){
 function testAlert(string) {
 	alert('Test Alert! '+string);
 }
-
 
 /**
  * Checks a Checkbox and hides/shows the container whose id is the same as the checkbox's value attribute.
