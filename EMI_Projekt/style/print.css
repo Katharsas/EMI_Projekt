@@ -20,7 +20,7 @@ table,th,td {
 
 #top, #main, #warning, #printcheck, iframe {display:none;}
 
-.noprint{display:none; !important;}
+.noprint{display:none;}
 .clear{clear:both;}
 .center{text-align:center;}
 .list{list-style:disc inside none;}
@@ -38,11 +38,10 @@ table,th,td {
     margin-top:20px;
 }
 
-  #printcheck {
- 	display:none;
+#printcheck {
 	width:100%;
 	overflow:hidden;
- }
+}
  
   #printcheckboxeswrapper{
 	margin-top:20px;

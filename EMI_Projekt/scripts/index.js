@@ -84,23 +84,15 @@ $(document).ready(function() {
 			checkCheckBox(this);
 		});	
 		
-		//button for switching screen style from index.css to print.css and back
+		//button for preview
 		$("#changebutton").click(function () {
-			if($('#css_link').attr("href")=="style/print.css"){$('#css_link').attr("href","style/index.css");}
-			else{$('#css_link').attr("href","style/print.css");}
-			return false;
+			switchPreview();
 		});
 		
 		//button for printing
 		$("#printbutton").click(function () {
-			if (!($('#css_link').attr("href")=="style/print.css")) {
-				$("#changebutton").click();}
-			var noprints = $('.noprint:visible');
-			$(noprints).hide();
-			window.print();//PRINT!!!
-			noprints.show();
-			$("#changebutton").click();
-			return false;
+			window.print();
+			if(isPreview()) {hidePreview();}
 		});
 	});
 	
@@ -120,6 +112,26 @@ $(document).ready(function() {
 	});
 });
 
+function switchPreview() {
+	if(!isPreview()) {showPreview();}
+	else {hidePreview();}
+}
+
+function isPreview() {
+	return $('.css_screen[disabled]').length>0;
+}
+
+function showPreview() {
+	$('.css_screen').attr('disabled', 'disabled');
+	$('.css_print').attr('media','screen,print');
+	// $('.css_preview').removeAttr('disabled');
+}
+
+function hidePreview() {
+	$('.css_screen').removeAttr('disabled');
+	$('.css_print').attr('media','print');
+	// $('.css_preview').attr('disabled', 'disabled');
+}
 
 /**
  * SVG Map Creation - Set Values to SVG Background, Image Dimension and HTML Container!
@@ -512,10 +524,7 @@ function switchFlatPoi(flatCode){
 		},50);
 		
 	}
-	
-	
 }
-
 
 /**
  * Don't worry about this one.
