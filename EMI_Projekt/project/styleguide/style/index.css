@@ -71,6 +71,15 @@ table,th,td {
 	width:640px;
 	margin:0 auto;
 }
+.colorbox {
+	width:2em;
+	height:0.8em;
+	margin:0;
+	padding:0;
+	top:20px;
+	vertical-align:-1px;
+	display:inline-block;
+}
 /*
  * //////////////////////////////////////////////////
  * JavaScript Warning
